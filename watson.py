@@ -17,7 +17,8 @@ def text_analysis(input, keywords):
         text=input,
         features=Features(emotion=EmotionOptions(targets=keywords))).get_result()
 
-    print(json.dumps(response, indent=2))
+    #print(json.dumps(response, indent=2))
+    return response['emotion']['document']['emotion']
 
 
 def keyword_analysis(input):
@@ -34,5 +35,7 @@ def keyword_analysis(input):
 
 test_text = "Supraja doesn't like IBM Watson. She hates him."
 
-keywords = keyword_analysis(test_text)
-text_analysis(test_text, keywords)
+def analyze(test_text):
+
+    keywords = keyword_analysis(test_text)
+    return text_analysis(test_text, keywords)
